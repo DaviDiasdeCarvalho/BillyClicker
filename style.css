@@ -1,0 +1,92 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+body{
+    background-color: grey;
+    display: flex;
+    flex-direction: column;
+}
+
+#containerPrincipal{
+    display: flex;
+    flex-direction: row;
+    border: 2px solid blue;
+    width: 100%;
+    height: 100%;
+}
+
+#espacoBotao{
+    border: 2px solid red;
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+}
+#botao_principal{
+    border-radius: 100px;
+    width: 100px;
+    height: 100px;
+}
+
+#menu{
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+    height: 100%;
+    width: 50%;
+    border: 2px solid yellow;
+}
+#contador{
+    font-family: "Honk", system-ui;
+    font-size: 100px;
+}
+#botoesDeUpgrade{
+    align-items: center;
+    flex-direction: column;
+    display: flex;
+    border: 2px solid white;
+    width: 100%;
+}
+#botaoUpgrade{
+    font-size: 20px;
+    justify-content: space-evenly;
+    align-items: center;
+    display: flex;
+    width: 100%;
+    border: 2px solid purple;
+}
+#upgradeClick{
+    height: 50px;
+    width: 60%;
+}
+#upgradeBilly{
+    height: 50px;
+    width: 60%;
+}
+
+
+
+#conquistas{
+    border: 2px solid black;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+#conquista50{
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    display: block;
+}
+/******Classes das conquistas*******/
+
+.escondido{
+    transition: all 0.5s linear;
+    opacity: 0;
+}
+
+.aparecido{
+    opacity: 1;
+}
