@@ -16,6 +16,7 @@ img{
 }
 
 #containerPrincipal{
+    border-bottom: 15px solid rgb(82, 72, 17);
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -27,6 +28,7 @@ img{
     width: 100%;
     justify-content: space-around;
     align-items: center;
+    border-right: 15px solid rgb(82, 72, 17);
 }
 #botao_principal{
     background: none;
@@ -53,25 +55,55 @@ img{
     width: 100%;
 }
 .botaoUpgrade{
-    font-size: 20px;
-    justify-content: space-around;
-    align-items: center;
     display: flex;
-    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    width: 90%;
+    margin-bottom: 10px;
 }
-.clickUP{
+.statusClickers{
+    margin-bottom: 13px;
+    justify-content: center;
+    display: flex;
+    border-radius: 15px;
+    cursor: pointer;
     font-size: x-large;
     font-family: "Winky Rough", sans-serif;
-    background-image: url(imgs/BackgroundImage.png);
+    background-color: rgb(221, 218, 218);
     height: 60px;
     width: 60%;
 }
+
+.clickUP{
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: x-large;
+    font-family: "Winky Rough", sans-serif;
+    background-color: rgb(221, 218, 218);
+    height: 60px;
+    width: 65%;
+    flex-shrink: 0;
+}
+
+.clickUP:hover{
+    background-color: rgb(172, 172, 172);
+}
+
 .precoUP{
-    padding: 0 20px 0 20px;
+    border-radius: 15px;
+    padding: 0 10px;
     font-family: "Winky Rough", sans-serif;
     font-size: xx-large;
-    background-image: url(imgs/BackgroundImage.png);
+    background-color: rgb(221, 218, 218);
+    height: 60px;
+    min-width: 90px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
 
 
 #conquistas{
@@ -81,19 +113,26 @@ img{
     flex-direction: column;
     justify-content: flex-end;
 }
-#conquista50{
+
+#conquista{
+    justify-content: center;
+    align-items: center;
     width: 100%;
-    background-color: rgb(255, 255, 255);
-    display: block;
+    background-color: rgb(128, 126, 109);
+    display: flex;
+    font-family: "Winky Rough", sans-serif;
 }
+
 /******Classes das conquistas*******/
 
 .escondido{
     transition: all 0.5s linear;
     opacity: 0;
+    color: rgb(0, 0, 0);
 }
 
 .aparecido{
     opacity: 1;
 }
+
 /***** billy caindo*****/
