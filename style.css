@@ -3,16 +3,23 @@ html, body {
   margin: 0;
   padding: 0;
 }
+
 body{
     background-color: grey;
     display: flex;
     flex-direction: column;
     background-image: url(imgs/BackgroundImage.png);
 }
+
 img{
     width: 300px;
     height: 300px;
     border-radius: 100%;
+}
+
+img:Active{
+    width: 90%;
+    height: 90%;
 }
 
 #containerPrincipal{
@@ -32,7 +39,7 @@ img{
 }
 #botao_principal{
     background: none;
-    border-radius: 100%;
+    border: nome;
 }
 
 #menu{
