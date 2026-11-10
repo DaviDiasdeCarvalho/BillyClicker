@@ -7,11 +7,17 @@ let PontosOuCliquesTotal = 0;
 
 /**** variaveis de conquista ****/
 let conquista = document.querySelector('#conquista');
-/**** variaveis para evitar repetiçao de conquistas ****/
-/* */
+/* varivaeis para animaçao de numero ao clicar (poder de click saindo da img) */
+let poderDeClick = 1;
 /*variaveis de upgrade*/
 let quantiUpClick = 1;
-/* variaveis do primeiro upgrade */
+
+
+
+
+
+
+
 let upgradeClick1 = document.querySelector('#upgradeClick1');
 let precoClick1 = document.querySelector('#precoClick1');
 let precoClickVar1 = 15;
@@ -20,6 +26,7 @@ let quantiUpClick1 = 0;
 /*** Botao para upgrade do click ***/
 upgradeClick1.addEventListener('click', function(){
     if(PontosOuCliquesTotal >= precoClickVar1){
+        poderDeClick += 1;
         quantiUpClick1++;
         quantiUpClick++;
         PontosOuCliquesTotal -= precoClickVar1;
@@ -37,13 +44,19 @@ upgradeClick1.addEventListener('click', function(){
 
 
 
+
+
+
+
 let upgradeClick10 = document.querySelector('#upgradeClick10');
 let precoClick10 = document.querySelector('#precoClick10');
 let precoClickVar10 = 2500;
 let quantiUpClick10 = 0;
+
 /*** Botao para upgrade do click ***/
 upgradeClick10.addEventListener('click', function(){
     if(PontosOuCliquesTotal >= precoClickVar10){
+        poderDeClick += 10;
         quantiUpClick10 += 10;
         quantiUpClick += 10;
         PontosOuCliquesTotal -= precoClickVar10;
@@ -83,17 +96,60 @@ let conquista100kVouF = 0; //0 para nao atingido e 1 para atingido
 
 
 
+
+
+
+
+let elementosTemp = document.querySelector('#elementosTemp');
+
+
+
+
+
 /**** clique no botao ****/
 botaoCounter.addEventListener('click', function(){
 
-    /**** Atualizacao dos cliques(ainda nao inclui update de mais pontos/clique)****/
+    /**** Atualizacao dos cliques****/
     if(quantiUpClick === 0){
         PontosOuCliquesTotal += 1;
     }
     else{
     PontosOuCliquesTotal += quantiUpClick;
     }
+
     quantosCliques.textContent = formatarNumero(PontosOuCliquesTotal);
+
+
+    /*
+    const animaçaoPoderDeClick = document.createElement("p");
+    animaçaoPoderDeClick.textContent = "Este texto foi criado dinamicamente via JavaScript!";
+    animaçaoPoderDeClick.className = "teste";
+    elementosTemp.appendChild(animaçaoPoderDeClick);
+
+    // sortear uma direção aleatória
+    const velocidade = [0, 0]
+    const posicao = [0, 0]
+    const gravidade = [0, 0.004]
+
+    setInterval(() => {
+        // achar a nova velocidade, dadas as forças (da gravidade)
+
+        // achar a nova posição, dada a nova velocidade
+
+        // atualizar as custom properties --x, --y com as novas posições
+    }, 16)
+
+
+    setTimeout(() => {
+        animaçaoPoderDeClick.remove();
+    }, 600)
+
+*/
+
+
+
+
+
 
     /**** Conquistas ****/
 
@@ -162,7 +218,7 @@ botaoCounter.addEventListener('click', function(){
 
 
 
-
+/*Menu*/
 
 
 let comprarAutoClick1 = document.querySelector('#comprarAutoClick1');
@@ -231,6 +287,10 @@ setInterval(function(){
 atualizarPrecoAutoClick();
 
 
+
+
+
+/***formataçao K M B T***/
 
 function formatarNumero(numero){
     if (numero >= 1e9){
