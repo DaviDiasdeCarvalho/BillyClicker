@@ -15,11 +15,14 @@ img{
     width: 300px;
     height: 300px;
     border-radius: 100%;
+    transition: transform 0.1s ease;
+    filter: drop-shadow(6px 6px 14px rgba(0,0,0,0.5)) brightness(1.04);
 }
 
 img:Active{
-    width: 90%;
-    height: 90%;
+     transform: scale(0.9);
+     filter: drop-shadow(7px 7px 18px rgba(0,0,0,0.5)) brightness(1);
+    
 }
 
 #containerPrincipal{
@@ -39,7 +42,7 @@ img:Active{
 }
 #botao_principal{
     background: none;
-    border: nome;
+    border: none;
 }
 
 #menu{
@@ -143,3 +146,21 @@ img:Active{
 }
 
 /***** billy caindo*****/
+
+.teste{
+    --x: 0px;
+    --y: 0px;
+    border: 2px solid black;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+
+    left: calc(50% - 50px);
+    top: calc(50% - 50px);
+    transform: translate(var(--x, 0), var(--y, 0));
+}
+
+#elementosTemp{
+    position: absolute;
+    inset: 0;
+}
