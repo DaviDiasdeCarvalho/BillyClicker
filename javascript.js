@@ -33,6 +33,7 @@ upgradeClick1.addEventListener('click', function(){
         precoClickVar1 = (15 + 3 * quantiUpClick1 * quantiUpClick1 + 4 * quantiUpClick1);
         precoClick1.textContent = formatarNumero(precoClickVar1);
         producaoAutoClick.textContent = formatarNumero(quantiAutoClick * quantiUpClick);
+        document.title = `${formatarNumero(Math.floor(PontosOuCliquesTotal))} Cliques | Billy Clicker`;
     }
 });
 
@@ -53,6 +54,7 @@ upgradeClick10.addEventListener('click', function(){
         precoClickVar10 = Math.floor(2300 * Math.pow(1.15, quantiUpClick10));
         precoClick10.textContent = formatarNumero(precoClickVar10);
         producaoAutoClick.textContent = formatarNumero(quantiAutoClick * quantiUpClick);
+        document.title = `${formatarNumero(Math.floor(PontosOuCliquesTotal))} Cliques | Billy Clicker`;
     }
 });
 
@@ -142,7 +144,7 @@ botaoCounter.addEventListener('click', function(){
     }
     
 
-
+    document.title = `${formatarNumero(Math.floor(PontosOuCliquesTotal))} Cliques | Billy Clicker`;
 });
 
 
@@ -202,7 +204,8 @@ comprarAutoClick1.addEventListener('click', function(){
         precoAutoClick1.textContent = formatarNumero(precoAutoClick1VAR);
         quantosAutoClick.textContent = formatarNumero(quantiAutoClick);
         producaoAutoClick.textContent = formatarNumero(quantiAutoClick * quantiUpClick);
-
+        document.title = `${formatarNumero(Math.floor(PontosOuCliquesTotal))} Cliques | Billy Clicker`;
+        
     }
 });
 
@@ -217,6 +220,7 @@ comprarAutoClick10.addEventListener('click', function(){
         precoAutoClick10.textContent = formatarNumero(precoAutoClick10VAR);
         quantosAutoClick.textContent = formatarNumero(quantiAutoClick);
         producaoAutoClick.textContent = formatarNumero(quantiAutoClick * quantiUpClick);
+        document.title = `${formatarNumero(Math.floor(PontosOuCliquesTotal))} Cliques | Billy Clicker`;
 
 
     }
@@ -232,6 +236,7 @@ comprarAutoClick100.addEventListener('click', function(){
         precoAutoClick100.textContent = formatarNumero(precoAutoClick100VAR);
         quantosAutoClick.textContent = formatarNumero(quantiAutoClick);
         producaoAutoClick.textContent = formatarNumero(quantiAutoClick * quantiUpClick);
+        document.title = `${formatarNumero(Math.floor(PontosOuCliquesTotal))} Cliques | Billy Clicker`;
 
 
     }
@@ -242,7 +247,7 @@ comprarAutoClick100.addEventListener('click', function(){
 setInterval(function(){
     PontosOuCliquesTotal += (quantiAutoClick * quantiUpClick) / 60;
     quantosCliques.textContent = formatarNumero(Math.floor(PontosOuCliquesTotal));
-    
+    document.title = `${formatarNumero(Math.floor(PontosOuCliquesTotal))} Cliques | Billy Clicker`;
 }, 1000 / 60);
 
 
