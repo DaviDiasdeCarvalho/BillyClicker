@@ -11,6 +11,9 @@ let conquista = document.querySelector('#conquista');
 /* */
 /*variaveis de upgrade*/
 let quantiUpClick = 1;
+
+
+
 /* variaveis do primeiro upgrade */
 let upgradeClick1 = document.querySelector('#upgradeClick1');
 let precoClick1 = document.querySelector('#precoClick1');
@@ -20,61 +23,38 @@ let quantiUpClick1 = 0;
 
 
 
-
-
-
-
-function calcularPrecoPoderClick(quantidade){
-    let precoClickTotal = 0;
-
-    for (let i = 0; i < quantidade; i++){
-        precoClickTotal += Math.floor(500 * Math.pow(1.08, quantiUpClick + i));
-    }
-
-    return precoClickTotal;
-};
-
-function atualizarPrecoClick(){
-    precoClick1.textContent = formatarNumero(calcularPrecoPoderClick(1));
-    precoClick10.textContent = formatarNumero(calcularPrecoPoderClick(10));
-
-    quantosClick.textContent = formatarNumero(quantiUpClick);
-    producaoAutoClick.textContent = formatarNumero(quantiAutoClick * quantiUpClick);
-}
-
-
-
-
-
-
-function comprarPoderClick(quantidade){
-    let preco = calcularPrecoPoderClick(quantidade);
-
-    if (PontosOuCliquesTotal >= preco){
-        PontosOuCliquesTotal -= preco;
-        quantiUpClick += quantidade;
-
-        quantosCliques.textContent = formatarNumero(PontosOuCliquesTotal);
-
-        atualizarPrecoClick();
-    }
-}
-
 /*** Botao para upgrade do click ***/
 upgradeClick1.addEventListener('click', function(){
-    comprarPoderClick(1);
+    if(PontosOuCliquesTotal >= precoClickVar1){
+        quantiUpClick += 1;
+        quantiUpClick1++;
+        PontosOuCliquesTotal -= precoClickVar1;
+        quantosCliques.textContent = formatarNumero(Math.floor(PontosOuCliquesTotal));
+        precoClickVar1 = (15 + 3 * quantiUpClick1 * quantiUpClick1 + 4 * quantiUpClick1);
+        precoClick1.textContent = formatarNumero(precoClickVar1);
+        producaoAutoClick.textContent = formatarNumero(quantiAutoClick * quantiUpClick);
+    }
 });
 
-
+/* variaveis do segundo upgrade */
 let upgradeClick10 = document.querySelector('#upgradeClick10');
 let precoClick10 = document.querySelector('#precoClick10');
 let precoClickVar10 = 2500;
 let quantiUpClick10 = 0;
-/*** Botao para upgrade do click ***/
-upgradeClick10.addEventListener('click', function(){
-    comprarPoderClick(10);
-});
 
+/*** Botao para upgrade do click ***/
+
+upgradeClick10.addEventListener('click', function(){
+    if(PontosOuCliquesTotal >= precoClickVar10){
+        quantiUpClick += 10;
+        quantiUpClick10 += 10;
+        PontosOuCliquesTotal -= precoClickVar10;
+        quantosCliques.textContent = formatarNumero(Math.floor(PontosOuCliquesTotal));
+        precoClickVar10 = Math.floor(2300 * Math.pow(1.15, quantiUpClick10));
+        precoClick10.textContent = formatarNumero(precoClickVar10);
+        producaoAutoClick.textContent = formatarNumero(quantiAutoClick * quantiUpClick);
+    }
+});
 
 
 
@@ -97,7 +77,6 @@ upgradeClick10.addEventListener('click', function(){
 
 /****variaveis para verificar se a conquista ja foi conquistada****/
 let conquista50VouF = 0; //0 para nao atingido e 1 para atingido
-let conquista500VouF = 0; //0 para nao atingido e 1 para atingido
 let conquista1000VouF = 0; //0 para nao atingido e 1 para atingido
 let conquista10000VouF = 0; //0 para nao atingido e 1 para atingido
 let conquista100kVouF = 0; //0 para nao atingido e 1 para atingido
@@ -114,27 +93,21 @@ botaoCounter.addEventListener('click', function(){
     }
     else{
     PontosOuCliquesTotal += quantiUpClick;
-    }larPrecoPoderClick(quantidade);
+    }
 
-    quantosCliques.textContent = formatarNumero(PontosOuCliquesTotal);
+    quantosCliques.textContent = formatarNumero(Math.floor(PontosOuCliquesTotal));
 
+
+    /** billy 30 150 **/
+    mostrarNumero(quantiUpClick);
     /**** Conquistas ****/
 
     if(PontosOuCliquesTotal >= 50 && conquista50VouF === 0){
         conquista.classList.add('aparecido');
         setTimeout(function() {
             conquista.classList.remove('aparecido');
-        }, 2000);
+        }, 3000);
         conquista50VouF = 1;
-    }
-
-    if(PontosOuCliquesTotal >= 500 && conquista500VouF === 0){
-        conquista.innerHTML = '<h1>Parabéns pelos 500 cliques 👍</h1>';
-        conquista.classList.add('aparecido');
-        setTimeout(function() {
-            conquista.classList.remove('aparecido');
-        }, 2000);
-        conquista500VouF = 1;
     }
 
     if(PontosOuCliquesTotal >= 1000 && conquista1000VouF === 0){
@@ -142,25 +115,29 @@ botaoCounter.addEventListener('click', function(){
         conquista.classList.add('aparecido');
         setTimeout(function() {
             conquista.classList.remove('aparecido');
-        }, 2000);
+        }, 3000);
         conquista1000VouF = 1;
     }
 
     if(PontosOuCliquesTotal >= 10000 && conquista10000VouF === 0){
-        conquista.innerHTML = '<h1>Parabéns pelos 10K cliques 👍</h1>';
+        conquista.innerHTML = '<h1>Parabéns pelos 10K cliques 👍 -- Recompensa: +60K Cliques</h1>';
+        PontosOuCliquesTotal += 60000;
+        quantosCliques.textContent = formatarNumero(Math.floor(PontosOuCliquesTotal));
         conquista.classList.add('aparecido');
         setTimeout(function() {
             conquista.classList.remove('aparecido');
-        }, 2000);
+        }, 3000);
         conquista10000VouF = 1;
     }
 
      if(PontosOuCliquesTotal >= 100000 && conquista100kVouF === 0){
-        conquista.innerHTML = '<h1>Parabéns pelos 100K cliques 👍</h1>';
+        conquista.innerHTML = '<h1>Parabéns pelos 100K cliques 👍 -- Recompensa: +1M cliques</h1>';
+        PontosOuCliquesTotal += 1000000;
+        quantosCliques.textContent = formatarNumero(Math.floor(PontosOuCliquesTotal));
         conquista.classList.add('aparecido');
         setTimeout(function() {
             conquista.classList.remove('aparecido');
-        }, 2000);
+        }, 3000);
         conquista100kVouF = 1;
     }
     
@@ -196,66 +173,89 @@ let precoAutoClick1 = document.querySelector('#precoAutoClick1');
 let precoAutoClick10 = document.querySelector('#precoAutoClick10');
 let precoAutoClick100 = document.querySelector('#precoAutoClick100');
 
+let precoAutoClick1VAR = 500;
+let precoAutoClick10VAR = 4000;
+let precoAutoClick100VAR = 30000;
+
+let quantiAutoClick1 = 0;
+let quantiAutoClick10  = 0;
+let quantiAutoClick100 = 0;
+
 let quantosAutoClick = document.querySelector('#quantosAutoClick');
 let producaoAutoClick = document.querySelector('#producaoAutoClick');
 
 let quantiAutoClick = 0;
 
-function calcularPrecoAutoClick(quantidade){
-    let precoTotal = 0;
 
-    for (let i = 0; i < quantidade; i++){
-        precoTotal += Math.floor(500 * Math.pow(1.08, quantiAutoClick + i));
-    }
-
-    return precoTotal;
-}
-
-function atualizarPrecoAutoClick(){
-    precoAutoClick1.textContent = formatarNumero(calcularPrecoAutoClick(1));
-    precoAutoClick10.textContent = formatarNumero(calcularPrecoAutoClick(10));
-    precoAutoClick100.textContent = formatarNumero(calcularPrecoAutoClick(100));
-
-    quantosAutoClick.textContent = formatarNumero(quantiAutoClick);
-    producaoAutoClick.textContent = formatarNumero(quantiAutoClick * quantiUpClick);
-}
-
-function comprarAutoClick(quantidade){
-    let preco = calcularPrecoAutoClick(quantidade);
-
-    if (PontosOuCliquesTotal >= preco){
-        PontosOuCliquesTotal -= preco;
-        quantiAutoClick += quantidade;
-
-        quantosCliques.textContent = formatarNumero(PontosOuCliquesTotal);
-
-        atualizarPrecoAutoClick();
-    }
-}
+precoAutoClick1.textContent = formatarNumero(precoAutoClick1VAR);
+precoAutoClick10.textContent = formatarNumero(precoAutoClick10VAR);
+precoAutoClick100.textContent = formatarNumero(precoAutoClick100VAR);
 
 comprarAutoClick1.addEventListener('click', function(){
-    comprarAutoClick(1);
+    if (PontosOuCliquesTotal >= precoAutoClick1VAR){
+        PontosOuCliquesTotal -= precoAutoClick1VAR;
+        quantiAutoClick += 1;
+        quantiAutoClick1 += 1;
+        precoAutoClick1VAR = Math.floor(500 * Math.pow(1.25, quantiAutoClick1));
+
+        quantosCliques.textContent = formatarNumero(Math.floor(PontosOuCliquesTotal));
+        precoAutoClick1.textContent = formatarNumero(precoAutoClick1VAR);
+        quantosAutoClick.textContent = formatarNumero(quantiAutoClick);
+        producaoAutoClick.textContent = formatarNumero(quantiAutoClick * quantiUpClick);
+
+    }
 });
 
 comprarAutoClick10.addEventListener('click', function(){
-    comprarAutoClick(10);
+    if (PontosOuCliquesTotal >= precoAutoClick10VAR){
+        PontosOuCliquesTotal -= precoAutoClick10VAR;
+        quantiAutoClick += 10;
+        quantiAutoClick10 += 1;
+        precoAutoClick10VAR =  Math.floor(precoAutoClick10VAR * 1.8);
+
+        quantosCliques.textContent = formatarNumero(Math.floor(PontosOuCliquesTotal));
+        precoAutoClick10.textContent = formatarNumero(precoAutoClick10VAR);
+        quantosAutoClick.textContent = formatarNumero(quantiAutoClick);
+        producaoAutoClick.textContent = formatarNumero(quantiAutoClick * quantiUpClick);
+
+
+    }
 });
 
 comprarAutoClick100.addEventListener('click', function(){
-    comprarAutoClick(100);
+    if (PontosOuCliquesTotal >= precoAutoClick100VAR){
+        PontosOuCliquesTotal -= precoAutoClick100VAR;
+        quantiAutoClick += 100;
+        quantiAutoClick100 += 1;
+        precoAutoClick100VAR = Math.floor(precoAutoClick100VAR * 2.1);
+        quantosCliques.textContent = formatarNumero(Math.floor(PontosOuCliquesTotal));
+        precoAutoClick100.textContent = formatarNumero(precoAutoClick100VAR);
+        quantosAutoClick.textContent = formatarNumero(quantiAutoClick);
+        producaoAutoClick.textContent = formatarNumero(quantiAutoClick * quantiUpClick);
+
+
+    }
 });
 
-setInterval(function(){
-    PontosOuCliquesTotal += quantiAutoClick * quantiUpClick;
-    quantosCliques.textContent = formatarNumero(PontosOuCliquesTotal);
-    atualizarPrecoAutoClick();
-}, 1000);
 
-atualizarPrecoAutoClick();
+
+setInterval(function(){
+    PontosOuCliquesTotal += (quantiAutoClick * quantiUpClick) / 60;
+    quantosCliques.textContent = formatarNumero(Math.floor(PontosOuCliquesTotal));
+    
+}, 1000 / 60);
+
+
 
 
 
 function formatarNumero(numero){
+    if (numero >= 1e15){
+        return (numero / 1e15).toFixed(1).replace(/\.0$/, '') + 'Qa';
+    }
+    if (numero >= 1e12){
+        return (numero / 1e12).toFixed(1).replace(/\.0$/, '') + 'T';
+    }
     if (numero >= 1e9){
         return (numero / 1e9).toFixed(1).replace(/\.0$/, '') + 'B';
     }
@@ -267,4 +267,26 @@ function formatarNumero(numero){
     }
 
     return numero.toString();
+}
+
+
+
+
+/* animaçao billy 30 150 */
+let elementosTemp = document.querySelector('#elementosTemp');
+function mostrarNumero(valor){
+    let numero = document.createElement('span');
+    numero.classList.add('numeroFlutuante');
+    numero.textContent = '+' + formatarNumero(valor);
+    let angulo = Math.random() * 120 + 30;
+    let distancia = 300;
+    let x = Math.cos(angulo * Math.PI / 180) * distancia;
+    let y = -Math.sin(angulo * Math.PI / 180) * distancia;
+    numero.style.setProperty('--x', x + 'px');
+    numero.style.setProperty('--y', y + 'px');
+    elementosTemp.appendChild(numero);
+    setTimeout(function(){
+        numero.remove();
+    }, 1200);
+
 }
