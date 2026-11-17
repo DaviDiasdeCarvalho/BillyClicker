@@ -283,7 +283,7 @@ function mostrarNumero(valor){
     let numero = document.createElement('span');
     numero.classList.add('numeroFlutuante');
     numero.textContent = '+' + formatarNumero(valor);
-    let angulo = Math.random() * 120 + 30;
+    let angulo = Math.random() * 360;
     let distancia = 300;
     let x = Math.cos(angulo * Math.PI / 180) * distancia;
     let y = -Math.sin(angulo * Math.PI / 180) * distancia;
